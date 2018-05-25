@@ -43,7 +43,7 @@ def get_frame(self):
 
 ### get\_ref\(\)
 
-Returns the coordinates of an object \(Rovio or obstacle\) and the direction to which our bot should move, to reach that object.
+Returns the coordinates of the bottom edge an object \(Rovio or obstacle\) and the direction to which our bot should move, to reach that object.
 
 {% code-tabs %}
 {% code-tabs-item title="search.py" %}
@@ -95,6 +95,8 @@ def avoidObs(self):
 {% endcode-tabs %}
 
 ### chase\(\)
+
+Begin chasing the other Rovio.
 
 {% code-tabs %}
 {% code-tabs-item title="search.py" %}
@@ -183,7 +185,7 @@ def search(self,partial=4,get_nearest=True):
 
 ### find\(\)
 
-Algorithm for finding Rovio or obstacle. 
+Turning 360 degree. If found Rovio then stop immediately, else continue turning. Once done turning 360 degree, turn towards the nearest/furthest obstacle.
 
 {% code-tabs %}
 {% code-tabs-item title="search.py" %}
@@ -243,6 +245,8 @@ def calc_dist(self, json, object='rovio'):
 
 ### move\_towards\(\)
 
+Move towards the object with a variable speed; faster at a distance, slower when nearer to avoid bumping into the object.
+
 {% code-tabs %}
 {% code-tabs-item title="search.py" %}
 ```python
@@ -281,7 +285,7 @@ def move_towards(self, object, get_nearest=True):
 
 ### move\_around\(\)
 
-Move around an obstacle by move past its 4 sides.
+Move around an obstacle. Default define around as moving pass all four sides of the obstacle.
 
 {% code-tabs %}
 {% code-tabs-item title="search.py" %}
@@ -356,7 +360,7 @@ def move_pass(self, object='obstacle',direction='left'):
 
 ### moving\(\)
 
-Move past an obstacle twice, on DIRECTION \( left or right \), one time left, one time right.
+Moving around the game area, on DIRECTION \( left or right \), one time left, one time right.
 
 {% code-tabs %}
 {% code-tabs-item title="search.py" %}
